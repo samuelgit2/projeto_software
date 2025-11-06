@@ -1,5 +1,5 @@
 from models import db, Task
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 
 # Cria a aplicação Flask
 app = Flask(__name__)
@@ -38,6 +38,18 @@ def create_task():
         flash('Erro ao criar tarefa', 'error')
     
     return redirect(url_for('index'))
+
+# Excluir tarefa
+@app.route('/task/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    try:
+        task = Task.query.get_or_404(task_id)
+        db.session.delete(task)
+        db.session.commit()
+        return jsonify({'message': '✅ Tarefa excluída com sucesso!'})
+    except Exception as e:
+        print(f"Erro ao excluir tarefa: {e}")  # ← ADICIONE ESTA LINHA PARA DEBUG
+        return jsonify({'error': '❌ Erro ao excluir tarefa'}), 500
 
 # Executar a aplicação
 if __name__ == '__main__':
