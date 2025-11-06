@@ -206,6 +206,22 @@
         .delete-btn:hover {
             background: #c0392b;
         }
+
+        .move-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+
+        .move-btn:hover {
+            background: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -268,8 +284,10 @@
                             </span>
                             <span>{{ task.created_at.strftime('%d/%m %H:%M') }}</span>
                         </div>
-  <!-- Botão Excluir -->
+<!-- Botão Excluir -->
                         <button class="delete-btn" onclick="deleteTask({{ task.id }})">Excluir</button>
+<!-- Botão Mover -->
+                        <button class="move-btn" onclick="moveTask({{ task.id }}, 'In Progress')">Em Progresso</button>
                     </div>
                     {% else %}
                     <div class="task" style="text-align: center; color: #95a5a6;">
@@ -278,7 +296,7 @@
                     {% endfor %}
                 </div>
                 
-                <!-- Em Progresso -->
+<!-- Em Progresso -->
                 <div class="column column-inprogress">
                     <h2>Em Progresso</h2>
                     {% for task in tasks if task.status == 'In Progress' %}
@@ -295,6 +313,8 @@
                         </div>
 <!-- Botão Excluir -->
                         <button class="delete-btn" onclick="deleteTask({{ task.id }})">Excluir</button>
+                        <button class="move-btn" onclick="moveTask({{ task.id }}, 'To Do')">Voltar</button>               
+                        <button class="move-btn" onclick="moveTask({{ task.id }}, 'Done')">Concluir</button>
                     </div>
                     {% else %}
                     <div class="task" style="text-align: center; color: #95a5a6;">
@@ -320,6 +340,7 @@
                         </div>
  <!-- Botão Excluir -->
                         <button class="delete-btn" onclick="deleteTask({{ task.id }})">Excluir</button>
+                        <button class="move-btn" onclick="moveTask({{ task.id }}, 'In Progress')">Reabrir</button>
                     </div>
                     {% else %}
                     <div class="task" style="text-align: center; color: #95a5a6;">
@@ -348,6 +369,30 @@
                 alert('Erro de conexão');
             });
         }
+    }
+    </script>
+        <script>
+    function moveTask(taskId, newStatus) {
+        fetch(`/task/${taskId}/status`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                status: newStatus
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                // Recarrega a página para ver as mudanças
+                location.reload(); 
+            } else {
+                alert('Erro ao mover tarefa');
+            }
+        })
+        .catch(error => {
+            alert('Erro de conexão');
+        });
     }
     </script>
 </body>

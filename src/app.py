@@ -46,10 +46,27 @@ def delete_task(task_id):
         task = Task.query.get_or_404(task_id)
         db.session.delete(task)
         db.session.commit()
-        return jsonify({'message': '✅ Tarefa excluída com sucesso!'})
+        return jsonify({'message': 'Tarefa excluída com sucesso!'})
     except Exception as e:
-        print(f"Erro ao excluir tarefa: {e}")  # ← ADICIONE ESTA LINHA PARA DEBUG
-        return jsonify({'error': '❌ Erro ao excluir tarefa'}), 500
+        return jsonify({'error': 'Erro ao excluir tarefa'}), 500
+    
+# Mudar estado das tarefas (mover entre colunas)
+@app.route('/task/<int:task_id>/status', methods=['PUT'])
+def update_task_status(task_id):
+    try:
+        task = Task.query.get_or_404(task_id)
+        new_status = request.json.get('status')
+        
+        if new_status in ['To Do', 'In Progress', 'Done']:
+            task.status = new_status
+            db.session.commit()
+            return jsonify({'message': f'Tarefa movida para {new_status}!'})
+        else:
+            return jsonify({'error': 'Status inválido'}), 400
+            
+    except Exception as e:
+        print(f"Erro ao atualizar tarefa: {e}")
+        return jsonify({'error': 'Erro ao atualizar tarefa'}), 500
 
 # Executar a aplicação
 if __name__ == '__main__':
