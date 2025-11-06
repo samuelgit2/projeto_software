@@ -282,7 +282,7 @@
                             <span class="priority priority-{{ task.priority|lower }}">
                                 {{ task.priority }}
                             </span>
-                            <span>{{ task.created_at.strftime('%d/%m %H:%M') }}</span>
+                            <span>{{ (task.created_at|adjust_timezone).strftime('%d/%m %H:%M') }}</span>
                         </div>
 <!-- Botão Excluir -->
                         <button class="delete-btn" onclick="deleteTask({{ task.id }})">Excluir</button>
@@ -309,7 +309,7 @@
                             <span class="priority priority-{{ task.priority|lower }}">
                                 {{ task.priority }}
                             </span>
-                            <span>{{ task.created_at.strftime('%d/%m %H:%M') }}</span>
+                            <span>{{ (task.created_at|adjust_timezone).strftime('%d/%m %H:%M') }}</span>
                         </div>
 <!-- Botão Excluir -->
                         <button class="delete-btn" onclick="deleteTask({{ task.id }})">Excluir</button>
@@ -336,7 +336,7 @@
                             <span class="priority priority-{{ task.priority|lower }}">
                                 {{ task.priority }}
                             </span>
-                            <span>{{ task.created_at.strftime('%d/%m %H:%M') }}</span>
+                            <span>{{ (task.created_at|adjust_timezone).strftime('%d/%m %H:%M') }}</span>
                         </div>
  <!-- Botão Excluir -->
                         <button class="delete-btn" onclick="deleteTask({{ task.id }})">Excluir</button>

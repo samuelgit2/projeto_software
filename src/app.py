@@ -1,5 +1,6 @@
 from models import db, Task
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from datetime import timedelta
 
 # Cria a aplicação Flask
 app = Flask(__name__)
@@ -9,6 +10,12 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Inicializa o banco de dados com o app
 db.init_app(app)
+
+
+# Filtro do fuso horário
+@app.template_filter('adjust_timezone')
+def adjust_timezone_filter(dt):
+    return dt - timedelta(hours=3)
 
 # Página principal - mostra o Kanban
 @app.route('/')
