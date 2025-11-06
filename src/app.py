@@ -43,5 +43,5 @@ def create_task():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    print("🎯 Servidor rodando em: http://localhost:5000")
+    print("🎯 Servidor flask rodando em: http://localhost:5000")
     app.run(debug=True)
