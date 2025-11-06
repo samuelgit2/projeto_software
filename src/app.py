@@ -1,4 +1,4 @@
-from src.models import db, Task
+from models import db, Task
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 # Cria a aplicação Flask
