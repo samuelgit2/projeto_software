@@ -1,6 +1,5 @@
+from src.models import db, Task
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
 
 # Cria a aplicação Flask
 app = Flask(__name__)
@@ -8,20 +7,8 @@ app.config['SECRET_KEY'] = 'minha-chave-secreta-123'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Cria o banco de dados
-db = SQLAlchemy(app)
-
-# Modelo para as tarefas
-class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text)
-    status = db.Column(db.String(20), default='To Do')
-    priority = db.Column(db.String(10), default='Medium')
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-
-    def __repr__(self):
-        return f'<Task {self.title}>'
+# Inicializa o banco de dados com o app
+db.init_app(app)
 
 # Página principal - mostra o Kanban
 @app.route('/')
@@ -46,9 +33,9 @@ def create_task():
         db.session.add(new_task)
         db.session.commit()
         
-        flash('✅ Tarefa criada com sucesso!', 'success')
+        flash('Tarefa criada com sucesso!', 'success')
     except Exception as e:
-        flash('❌ Erro ao criar tarefa', 'error')
+        flash('Erro ao criar tarefa', 'error')
     
     return redirect(url_for('index'))
 
