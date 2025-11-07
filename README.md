@@ -59,6 +59,7 @@ Abrir o navegador e acessar: http://localhost:5000
 **Alteração na organização dos elementos para acessibilidade, contador de tarefas e implementação de tempo nas tarefas**
 - Foi solicitado a mudança na ordem dos elementos para mais praticidade para a empresa
 - foi-se adicionado um contador para quantia de tarefas existentes
+- Um resumo do que esta sendo criado e desenvolvido foi uma das mudanças visuais mais importantes
 - o codigo nao tinha um horario de quando a tarefa foi upada, utilizando uma linha no index rapidamente foi resolvido esse problema
 - No qual seu impacto trouxe pontos positivos para a gestão melhorada das tarefas
 
