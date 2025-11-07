@@ -2,6 +2,7 @@ from models import db, Task
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from datetime import timedelta
 
+
 # Cria a aplicação Flask
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'minha-chave-secreta-123'
@@ -81,3 +82,4 @@ if __name__ == '__main__':
         db.create_all()
     print("🎯 Servidor flask rodando em: http://localhost:5000")
     app.run(debug=True)
+    
