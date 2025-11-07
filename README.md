@@ -3,12 +3,12 @@
 
 
 **Linguagens para o desenvolvimento**
--Back-end: Python - Flask;
--Front-end: HTML - CSS - JavaScript;
--Teste: Pytest.
--Banco de Dados: SQLite - SQLAlchemy;
--CI/CD: GitHub Actions;
--Controle de Versão: Git/GitHub;
+- Back-end: Python - Flask;
+- Front-end: HTML - CSS - JavaScript;
+- Teste: Pytest.
+- Banco de Dados: SQLite - SQLAlchemy;
+- CI/CD: GitHub Actions;
+- Controle de Versão: Git/GitHub;
 
 
 **SOFTWARE DE ORGANIZAÇÃO - TECHFLOW SOLUTIONS**
@@ -22,24 +22,24 @@ Criação de um sistema web, realizado com a utilização das linguagens Python 
 **Foco**
 Realizar um software para o gerenciamento de tarefas com enfase nos conceitos da diciplina de Engenharia de Software, onde seus objetivos são:
 
--Dominio do sistema Git/GitHub com o uso de commits;
--Integração Contínua CI/CD;
--Criação de um CRUD
--Metodos Ágeis com enfase no Kanban;
--Execução de workflows.
--Metodo de verificação da entegridade do codigo
--Organização nas pastas do
--Mudanças no Escopo do projeto;
+- Dominio do sistema Git/GitHub com o uso de commits;
+- Integração Contínua CI/CD;
+- Criação de um CRUD
+- Metodos Ágeis com enfase no Kanban;
+- Execução de workflows.
+- Metodo de verificação da entegridade do codigo
+- Organização nas pastas do
+- Mudanças no Escopo do projeto;
 
 
 **Metodologia Ágil**
 Quadro Kanban:
 
--Realização de mudanças atualizadas no projeto
--Melhor vizualição do que esta sendo executado
--Controle no teste e qualidade do software
--Quadro visual no GitHub Projects.
--Fundamental para organização antes da inicialização de um projeto
+- Realização de mudanças atualizadas no projeto
+- Melhor vizualição do que esta sendo executado
+- Controle no teste e qualidade do software
+- Quadro visual no GitHub Projects.
+- Fundamental para organização antes da inicialização de um projeto
 
 **PROJETO:**
 Utilizar a versão Python 3.9 ou mais recente junto ao Git
